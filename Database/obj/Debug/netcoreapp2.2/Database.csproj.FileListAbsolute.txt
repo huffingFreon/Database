@@ -1,0 +1,11 @@
+C:\Users\higginsba\source\repos\Database\Database\bin\Debug\netcoreapp2.2\Database.deps.json
+C:\Users\higginsba\source\repos\Database\Database\bin\Debug\netcoreapp2.2\Database.runtimeconfig.json
+C:\Users\higginsba\source\repos\Database\Database\bin\Debug\netcoreapp2.2\Database.runtimeconfig.dev.json
+C:\Users\higginsba\source\repos\Database\Database\bin\Debug\netcoreapp2.2\Database.dll
+C:\Users\higginsba\source\repos\Database\Database\obj\Debug\netcoreapp2.2\Database.csprojAssemblyReference.cache
+C:\Users\higginsba\source\repos\Database\Database\obj\Debug\netcoreapp2.2\Database.csproj.CoreCompileInputs.cache
+C:\Users\higginsba\source\repos\Database\Database\obj\Debug\netcoreapp2.2\Database.AssemblyInfoInputs.cache
+C:\Users\higginsba\source\repos\Database\Database\obj\Debug\netcoreapp2.2\Database.AssemblyInfo.cs
+C:\Users\higginsba\source\repos\Database\Database\bin\Debug\netcoreapp2.2\Database.pdb
+C:\Users\higginsba\source\repos\Database\Database\obj\Debug\netcoreapp2.2\Database.dll
+C:\Users\higginsba\source\repos\Database\Database\obj\Debug\netcoreapp2.2\Database.pdb
