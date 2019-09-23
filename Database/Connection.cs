@@ -7,7 +7,8 @@ namespace Database
 {
     public class Connection
     {
-       public SqlConnectionStringBuilder BuiltConnection { get; set; }
+       public SqlConnectionStringBuilder BuiltConnectionString { get; set; }
+       public SqlConnection BuiltConnection { get; set; }
 
        public Connection(FileInfo file) 
        {
@@ -22,7 +23,9 @@ namespace Database
                 }
            }
 
-           BuiltConnection = JsonConvert.DeserializeObject<SqlConnectionStringBuilder>(strJSON);
+           BuiltConnectionString = JsonConvert.DeserializeObject<SqlConnectionStringBuilder>(strJSON);
+           BuiltConnection = new SqlConnection(BuiltConnectionString.ToString());
+           
        }
     }
 }

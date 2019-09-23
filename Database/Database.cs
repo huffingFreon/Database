@@ -13,7 +13,9 @@ namespace Database
             FileInfo connectionJson = new FileInfo(strPath);
             Connection naw = new Connection(connectionJson);
 
-            Console.WriteLine(naw.BuiltConnection.Password);
+            Console.WriteLine(naw.BuiltConnectionString.ConnectionString);
+
+
         }
     }
 }
