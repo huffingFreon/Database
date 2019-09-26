@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using System;
 using System.Data.SqlClient;
 using System.IO;
 
@@ -25,7 +24,6 @@ namespace Database
 
            BuiltConnectionString = JsonConvert.DeserializeObject<SqlConnectionStringBuilder>(strJSON);
            BuiltConnection = new SqlConnection(BuiltConnectionString.ToString());
-           
        }
     }
 }

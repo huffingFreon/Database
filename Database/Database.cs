@@ -9,13 +9,11 @@ namespace Database
     {
         public static void Main()
         {
-            string strPath = @"C:\Users\higginsba\source\repos\Database\Database\config.json";
+            string strPath = @"C:\Users\benoh\source\repos\Database\Database\LiteConfig.json";
             FileInfo connectionJson = new FileInfo(strPath);
-            Connection naw = new Connection(connectionJson);
+            SQLiteConnection naw = new SQLiteConnection(connectionJson);
 
-            Console.WriteLine(naw.BuiltConnectionString.ConnectionString);
-
-
+            Console.WriteLine(naw.BuiltConnection.State);
         }
     }
 }
