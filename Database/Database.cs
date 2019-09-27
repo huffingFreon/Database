@@ -11,9 +11,19 @@ namespace Database
         {
             string strPath = @"C:\Users\benoh\source\repos\Database\Database\LiteConfig.json";
             FileInfo connectionJson = new FileInfo(strPath);
-            SQLiteConnection naw = new SQLiteConnection(connectionJson);
+            LiteConnection naw = new LiteConnection(connectionJson);
+            QueryBuilder qb = new QueryBuilder(naw.BuiltConnection);
 
-            Console.WriteLine(naw.BuiltConnection.State);
+            naw.BuiltConnection.Open();
+
+            Dictionary<int, string> dict = qb.SelectAll();
+            int iCounter = 0;
+
+            foreach (var item in dict)
+            {
+                Console.WriteLine(dict[iCounter]);
+                iCounter++;
+            }
         }
     }
 }

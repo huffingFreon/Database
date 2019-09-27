@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 using System.IO;
 
 namespace Database
 {
-    public class SQLiteConnection
+    public class LiteConnection
     {
-       public SQLiteConnectionStringBuilder BuiltConnectionString { get; set; }
-       public SQLiteConnection BuiltConnection { get; set; }
+       public SqliteConnectionStringBuilder BuiltConnectionString { get; set; }
+       public SqliteConnection BuiltConnection { get; set; }
 
-       public SQLiteConnection(FileInfo file) 
+       public LiteConnection(FileInfo file) 
        {
            string strJSON = "";
 
@@ -22,8 +22,8 @@ namespace Database
                 }
            }
 
-           BuiltConnectionString = JsonConvert.DeserializeObject<SQLiteConnectionStringBuilder>(strJSON);
-            BuiltConnection = new System.Data.SQLite.SQLiteConnection(BuiltConnectionString.ToString());
+           BuiltConnectionString = JsonConvert.DeserializeObject<SqliteConnectionStringBuilder>(strJSON);
+           BuiltConnection = new SqliteConnection(BuiltConnectionString.ToString());
        }
     }
 }
