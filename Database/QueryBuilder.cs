@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Data.Sqlite;
-using System.Text;
 
 namespace Database
 {
@@ -70,26 +68,38 @@ namespace Database
         public Dictionary<int, string> SelectAll()
         {
             Dictionary<int, string> allData = new Dictionary<int, string>();
-            command.CommandText = "select * from Person";
-            SqliteDataReader dataReader = command.ExecuteReader();
-            int iInside = 0;
-            int iOutside = 0;
-            string strRow = "";
-            
-            while(dataReader.GetString(iInside) != null)
+            int iRows;
+            string strColumnNames = "";
+
+            command.CommandText = "select count(*) from Person";
+            SqliteDataReader dataReader; 
+
+            using (dataReader = command.ExecuteReader())
             {
                 dataReader.Read();
+                iRows = dataReader.GetInt32(0);
+            }
 
-                strRow += "\n";
+            command.CommandText = "select * from Person";
+            dataReader = command.ExecuteReader();
 
-                for (int i = 0; i < dataReader.FieldCount; i++)
+            for (int i = 0; i < dataReader.FieldCount; i++)
+            {
+                strColumnNames += dataReader.GetName(i) + "\t";
+            }
+            allData.Add(0, strColumnNames);
+
+            for (int i = 0; i < iRows; i++)
+            {
+                dataReader.Read();
+                string rowData = "";
+
+                for (int j = 0; j < dataReader.FieldCount; j++)
                 {
-                    strRow += dataReader.GetString(i) + "\t";
+                    rowData += dataReader.GetString(j) + "\t\t";
                 }
 
-                allData.Add(iOutside, strRow);
-
-                iOutside++;
+                allData.Add((i + 1), rowData);
             }
 
             return allData;
