@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.Sqlite;
-using System;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -110,6 +109,46 @@ namespace Database
             iUpdated = Command.ExecuteNonQuery();
 
             return iUpdated;
+        }
+
+        public Dictionary<int, string> SelectAll()
+        {
+            Dictionary<int, string> allData = new Dictionary<int, string>();
+            int iRows;
+            string strColumnNames = "";
+
+            Command.CommandText = $"select count(*) from {TableName}";
+            SqliteDataReader dataReader; 
+
+            using (dataReader = Command.ExecuteReader())
+            {
+                dataReader.Read();
+                iRows = dataReader.GetInt32(0);
+            }
+
+            Command.CommandText = $"select * from {TableName}";
+            dataReader = Command.ExecuteReader();
+
+            for (int i = 0; i < dataReader.FieldCount; i++)
+            {
+                strColumnNames += dataReader.GetName(i) + "\t";
+            }
+            allData.Add(0, strColumnNames);
+
+            for (int i = 0; i < iRows; i++)
+            {
+                dataReader.Read();
+                string rowData = "";
+
+                for (int j = 0; j < dataReader.FieldCount; j++)
+                {
+                    rowData += dataReader.GetString(j) + "\t\t";
+                }
+
+                allData.Add((i + 1), rowData);
+            }
+
+            return allData;
         }
     }
 }
